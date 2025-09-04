@@ -1,57 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ottri Competitive Landscape</title>
+    <title>Ottri | Competitor Intelligence Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* slate-50 */
+            background-color: #f1f5f9; /* slate-100 */
         }
         .gradient-text {
             background: linear-gradient(to right, #3b82f6, #14b8a6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .card {
+        .nav-tab {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-tab.active {
+            color: #14b8a6; /* teal-500 */
+            border-bottom-color: #14b8a6;
+        }
+        .kpi-card {
             background-color: white;
             border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
         }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        .tab-content {
+            display: none;
         }
-        /* Accordion Styles */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
+        .tab-content.active {
+            display: block;
         }
-        .accordion-item.active .accordion-content {
-            max-height: 1000px; /* Adjust as needed */
-            transition: max-height 0.5s ease-in;
+        /* Modal styles */
+        .modal-overlay {
+            transition: opacity 0.3s ease;
         }
-        .accordion-item.active .chevron-icon {
-            transform: rotate(180deg);
+        .modal-container {
+            transition: transform 0.3s ease;
         }
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-weight: 500;
-            transition: background-color 0.2s, color 0.2s;
-            border: 1px solid #e2e8f0;
-            background-color: white;
-            color: #334155;
+        /* Custom scrollbar for modal */
+        .modal-body::-webkit-scrollbar {
+            width: 8px;
         }
-        .filter-btn.active {
-            background-color: #0f766e; /* teal-700 */
-            color: white;
-            border-color: #0f766e;
+        .modal-body::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .modal-body::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        .modal-body::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
         }
     </style>
 </head>
@@ -60,299 +64,481 @@
     <div class="container mx-auto p-4 sm:p-6 lg:p-8">
         
         <!-- Header -->
-        <header class="text-center mb-12">
+        <header class="text-center mb-8">
             <h1 class="text-4xl md:text-5xl font-bold mb-2">
-                Welcome to the <span class="gradient-text">Embedded Finance Landscape</span>
+                Competitor Intelligence <span class="gradient-text">Dashboard</span>
             </h1>
-            <p class="text-lg text-slate-600 max-w-3xl mx-auto">An interactive guide for the Ottri team to understand our competitors and the market we're shaping.</p>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto">An interactive tool to explore players, products, and positioning in the embedded finance space.</p>
         </header>
 
-        <!-- Section 1: The 3 Core Business Models -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-8">The 3 Core Business Models</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                 <!-- Card 1: Lender Platform -->
-                <div class="card p-6 flex flex-col">
-                    <div class="flex items-center mb-4">
-                        <div class="p-3 bg-blue-100 rounded-full mr-4">
-                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold">Lender Platform</h3>
-                    </div>
-                    <div class="flex-grow">
-                        <p class="text-slate-600 mb-4">Offers one financing product from a single source (often a bank). Simple and consistent, but with lower approval rates.</p>
-                        <div class="space-y-2 text-sm">
-                            <p><span class="font-semibold text-teal-600">Pros:</span> Simple, consistent branding.</p>
-                            <p><span class="font-semibold text-red-500">Cons:</span> Lower approval rates, less flexibility.</p>
-                        </div>
-                    </div>
-                    <div class="pt-4">
-                        <p class="font-semibold text-sm">Key Players:</p>
-                        <div class="flex flex-wrap gap-2 mt-2">
-                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Goodleap</span>
-                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Synchrony</span>
-                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Service Finance</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 2: Aggregator -->
-                <div class="card p-6 flex flex-col">
-                    <div class="flex items-center mb-4">
-                        <div class="p-3 bg-teal-100 rounded-full mr-4">
-                           <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold">Aggregator</h3>
-                    </div>
-                    <div class="flex-grow">
-                        <p class="text-slate-600 mb-4">One platform connects to a curated network of lenders, creating a "waterfall" to boost approval chances.</p>
-                         <div class="space-y-2 text-sm">
-                            <p><span class="font-semibold text-teal-600">Pros:</span> Higher approval rates, more options.</p>
-                            <p><span class="font-semibold text-red-500">Cons:</span> Can be more complex to manage.</p>
-                        </div>
-                    </div>
-                    <div class="pt-4">
-                        <p class="font-semibold text-sm">Key Players:</p>
-                        <div class="flex flex-wrap gap-2 mt-2">
-                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Momnt</span>
-                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">ChargeAfter</span>
-                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">GreenSky</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 3: Marketplace -->
-                <div class="card p-6 flex flex-col">
-                    <div class="flex items-center mb-4">
-                        <div class="p-3 bg-indigo-100 rounded-full mr-4">
-                            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold">Marketplace</h3>
-                    </div>
-                    <div class="flex-grow">
-                        <p class="text-slate-600 mb-4">An open platform where multiple lenders compete. Often free for the merchant, with a "no dealer fee" model.</p>
-                        <div class="space-y-2 text-sm">
-                            <p><span class="font-semibold text-teal-600">Pros:</span> "No dealer fees" is a huge selling point.</p>
-                            <p><span class="font-semibold text-red-500">Cons:</span> Cost passed to consumer (higher rates).</p>
-                        </div>
-                    </div>
-                    <div class="pt-4">
-                        <p class="font-semibold text-sm">Key Players:</p>
-                        <div class="flex flex-wrap gap-2 mt-2">
-                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Acorn Finance</span>
-                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Hearth</span>
-                        </div>
-                    </div>
-                </div>
+        <!-- Navigation Tabs -->
+        <nav class="bg-white rounded-lg shadow-sm sticky top-4 z-20 mb-8">
+            <div class="flex items-center justify-center border-b border-slate-200">
+                <button data-tab="overview" class="nav-tab active text-slate-500 font-semibold py-4 px-6 border-b-2 border-transparent">Overview</button>
+                <button data-tab="profiles" class="nav-tab text-slate-500 font-semibold py-4 px-6 border-b-2 border-transparent">Company Profiles</button>
+                <button data-tab="comparison" class="nav-tab text-slate-500 font-semibold py-4 px-6 border-b-2 border-transparent">Product Comparison</button>
+                <button data-tab="positioning" class="nav-tab text-slate-500 font-semibold py-4 px-6 border-b-2 border-transparent">Market Positioning</button>
+                <button data-tab="insights" class="nav-tab text-slate-500 font-semibold py-4 px-6 border-b-2 border-transparent">Insights</button>
             </div>
-        </section>
+        </nav>
 
-        <!-- Section 2: Competitor Directory -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-bold text-center mb-8">Competitor Directory</h2>
-            
-            <!-- Filters -->
-            <div class="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-md mb-8 sticky top-4 z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                    <!-- Search -->
+        <main>
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-content active">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <div class="lg:col-span-1">
-                        <input type="text" id="searchInput" placeholder="Search by company name..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition">
-                    </div>
-                    <!-- Filters -->
-                    <div class="lg:col-span-2 flex flex-wrap items-center gap-4">
-                        <div id="modelFilters" class="flex flex-wrap items-center gap-2">
-                            <span class="font-semibold">Model:</span>
-                            <button class="filter-btn active" data-filter="all">All</button>
-                            <button class="filter-btn" data-filter="Lender Platform">Lender Platform</button>
-                            <button class="filter-btn" data-filter="Aggregator">Aggregator</button>
-                            <button class="filter-btn" data-filter="Marketplace">Marketplace</button>
+                        <div class="kpi-card h-full">
+                            <h3 class="font-bold text-xl mb-4 text-slate-700">Market Breakdown</h3>
+                            <canvas id="marketDistributionChart"></canvas>
                         </div>
-                         <div id="verticalFilters" class="flex flex-wrap items-center gap-2">
-                            <span class="font-semibold">Vertical:</span>
-                            <button class="filter-btn active" data-filter="all">All</button>
-                            <button class="filter-btn" data-filter="HI">HI</button>
-                            <button class="filter-btn" data-filter="MED">Medical</button>
+                    </div>
+                    <div class="lg:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-6">
+                        <div class="kpi-card text-center flex flex-col justify-between">
+                            <h4 class="text-slate-500 font-semibold">Total Companies</h4>
+                            <p id="kpi-total-companies" class="text-5xl font-bold gradient-text">0</p>
+                        </div>
+                         <div class="kpi-card text-center flex flex-col justify-between">
+                            <h4 class="text-slate-500 font-semibold">% with Unsecured Loans</h4>
+                            <p id="kpi-unsecured" class="text-5xl font-bold gradient-text">0%</p>
+                        </div>
+                         <div class="kpi-card text-center flex flex-col justify-between">
+                            <h4 class="text-slate-500 font-semibold">% Offering HELOCs</h4>
+                            <p id="kpi-heloc" class="text-5xl font-bold gradient-text">0%</p>
+                        </div>
+                         <div class="kpi-card text-center flex flex-col justify-between">
+                            <h4 class="text-slate-500 font-semibold">% Offering BNPL</h4>
+                            <p id="kpi-bnpl" class="text-5xl font-bold gradient-text">0%</p>
+                        </div>
+                         <div class="kpi-card text-center flex flex-col justify-between">
+                            <h4 class="text-slate-500 font-semibold">% Offering Virtual Cards</h4>
+                            <p id="kpi-vcards" class="text-5xl font-bold gradient-text">0%</p>
+                        </div>
+                         <div class="kpi-card text-center flex flex-col justify-between">
+                            <h4 class="text-slate-500 font-semibold">Avg. Product Breadth</h4>
+                            <p id="kpi-avg-products" class="text-5xl font-bold gradient-text">0</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Competitor List -->
-            <div id="competitorList" class="space-y-4">
-                <!-- Competitor data will be injected here by JavaScript -->
+            <!-- Company Profiles Tab -->
+            <div id="profiles" class="tab-content">
+                <div class="bg-white p-4 rounded-xl shadow-md mb-6">
+                     <input type="text" id="profilesSearch" placeholder="Search by company name..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition">
+                </div>
+                <div class="overflow-x-auto bg-white rounded-xl shadow-md">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-slate-50 text-xs text-slate-700 uppercase">
+                            <tr>
+                                <th class="px-6 py-3">Company Name</th>
+                                <th class="px-6 py-3">Type</th>
+                                <th class="px-6 py-3">Verticals</th>
+                                <th class="px-6 py-3">Products</th>
+                                <th class="px-6 py-3 text-right">Merchants</th>
+                            </tr>
+                        </thead>
+                        <tbody id="profilesTableBody">
+                            <!-- JS will populate this -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
-             <p id="noResults" class="text-center text-slate-500 py-8 hidden">No competitors match the current filters.</p>
-        </section>
 
-        <!-- Footer -->
-        <footer class="text-center mt-12 py-6 border-t border-slate-200">
-            <p class="text-slate-500">Ottri Internal Intelligence | September 2025</p>
-        </footer>
+            <!-- Product Comparison Tab -->
+            <div id="comparison" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                    <div class="lg:col-span-1">
+                        <div class="kpi-card">
+                            <h3 class="font-bold text-lg mb-4">Filter Products</h3>
+                            <div id="product-filters" class="space-y-2">
+                                <!-- JS will populate this -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-3 kpi-card">
+                         <h3 class="font-bold text-xl mb-4 text-slate-700">Product Offerings by Company</h3>
+                        <canvas id="productComparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Positioning Tab -->
+            <div id="positioning" class="tab-content">
+                 <div class="kpi-card">
+                    <h3 class="font-bold text-xl mb-4 text-slate-700">Market Positioning Matrix</h3>
+                    <p class="text-sm text-slate-500 mb-4">Analysis of Product Breadth vs. Market Reach. Bubble size represents merchant count.</p>
+                    <div class="relative h-[500px]">
+                        <canvas id="marketPositioningChart"></canvas>
+                    </div>
+                 </div>
+            </div>
+
+            <!-- Insights Tab -->
+            <div id="insights" class="tab-content">
+                <div id="insights-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- JS will populate this -->
+                </div>
+            </div>
+        </main>
     </div>
 
+    <!-- Company Detail Modal -->
+    <div id="companyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden modal-overlay">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col modal-container scale-95">
+            <div class="flex justify-between items-center p-6 border-b border-slate-200">
+                <h2 id="modal-title" class="text-2xl font-bold">Company Name</h2>
+                <button id="closeModal" class="text-slate-400 hover:text-slate-800">&times;</button>
+            </div>
+            <div id="modal-body" class="p-6 overflow-y-auto modal-body">
+                <!-- JS will populate this -->
+            </div>
+        </div>
+    </div>
+
+
 <script>
-const competitors = [
-    { name: 'Goodleap', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'Y', bnpl: 'N', onboard: 'Contact us', creditCat: 'Prime, Near Prime', creditFico: '580+', minTicket: '1000', maxTicket: '125000', pricing: 'Offer 0% MDR to merchant, usually ranges between 3-17%, Solar 20-35%', partners: 'Thousands of contractor/business partners nationwide.' },
-    { name: 'Momnt', type: 'Aggregator', verticals: 'HI, MED', unsecured: 'Y', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: '580+', minTicket: '3100', maxTicket: '75000', pricing: '0%–23.99% APR; same-as-cash and fixed payment promos; competitive merchant fees.', partners: 'Extensive SaaS, lender, and merchant integrations via API, embedded platforms' },
-    { name: 'Avvance (U.S. Bank)', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'Contact us', creditCat: 'Prime, Near Prime', creditFico: '660+', minTicket: '300', maxTicket: '25000', pricing: 'APR 0%–24.99%, 3–60 month terms, instant approval, no hidden fees.', partners: 'Integrated with merchant portal platforms (Pure Finance, talech), API support' },
-    { name: 'ClarityPay', type: 'Lender Platform', verticals: 'HI, MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: '300+', minTicket: '100', maxTicket: '50000', pricing: 'Transparent monthly payments, clear fees, 0% promo plans, 4-week to 84-month terms.', partners: 'API/commerce platform integration, full technical support.' },
-    { name: 'Covered Care', type: 'Lender Platform', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: '300+', minTicket: '500', maxTicket: '25000', pricing: 'APR 0%–36%, up to 72 months, promo 0% for 3–36 mo.', partners: 'API and portal integrations for practices, SMS/email remote onboarding.' },
-    { name: 'hfd', type: 'Lender Platform', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: 'N/A', maxTicket: 'N/A', pricing: 'APR 5.99%–29.99%; clear payments, no hidden fees.', bankPartners: 'Hatch Bank', partners: 'All-in-one platform, rapid practice onboarding.' },
-    { name: 'Cherry', type: 'Lender Platform', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: 'N/A', maxTicket: '50000', pricing: '“True 0% APR,” “4 interest-free payments every 2 weeks” to installments up to 60 months.', bankPartners: 'Lead Bank', partners: 'Provider gets exclusive application link; patient approval in ~60 seconds.' },
-    { name: 'PatientFi', type: 'Aggregator', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '200', maxTicket: '50000', pricing: '0% APR promotional plans; no setup costs mentioned.', bankPartners: 'Connexus CU, Optum Bank, Pathways Financial CU, Suncoast CU', partners: 'Co-marketing and integrations (Allergan Aesthetics, TransUnion, etc.).' },
-    { name: 'Proceed Finance', type: 'Aggregator', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'BAD', creditCat: 'Prime, Near Prime', creditFico: '600+', minTicket: '2500', maxTicket: '75000', pricing: 'Fixed-rate installment loans; long-term financing (up to 12 years); APR starting at 3.99%.', bankPartners: 'Optum Bank, Security First Bank (funding/servicing), WebBank', partners: 'Works with dental and medical providers directly.' },
-    { name: 'PowerPay', type: 'Aggregator', verticals: 'HI, MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Instant', creditCat: 'Near Prime, Prime', creditFico: '600+', minTicket: 'N/A', maxTicket: '100000', pricing: 'Rates starting around 6.99%–8.99% APR with staged funding and no dealer fees.', bankPartners: 'American Heritage CU, FinWise Bank, Synovus Bank, KeyBank', partners: 'Network includes contractors and dealers; partnerships with software/utilities.' },
-    { name: 'Foundation Finance', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Instant', creditCat: 'Full Spectrum', creditFico: '550+', minTicket: '1000', maxTicket: '100000', pricing: 'Fixed-rate installment loans; 12–240-month terms; no prepayment penalties; deferred/same-as-cash promos.', partners: 'Works directly with contractors/dealers; provides marketing toolkits.' },
-    { name: 'TGUC Financial', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Instant', creditCat: 'Full Spectrum', creditFico: '550+', minTicket: 'N/A', maxTicket: '100000', pricing: 'Flexible terms (up to 15 years), fast approval, low fixed rates.', partners: 'TGUC and CUCollaborate partnerships bring credit unions into their lending network.' },
-    { name: 'Aqua Finance', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: 'N/A', maxTicket: 'N/A', pricing: 'Fast approvals (60 seconds); no prepayment penalties; non-recourse to dealers.', partners: 'Partnerships with AppOne for Recreation dealers.' },
-    { name: 'FTL Finance', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'Y', heloc: 'N', bnpl: 'N', onboard: 'Instant', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '300', maxTicket: '35000', pricing: 'No fees; free to join.', bankPartners: 'FTL Capital Partners', partners: 'Distribution partners (Johnstone Supply, ACCA, EGIA, etc.).' },
-    { name: 'Service Finance (Truist)', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'Y', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'Prime', creditFico: 'N/A', minTicket: 'N/A', maxTicket: '100000', pricing: 'N/A', bankPartners: 'Truist Bank', partners: '250+ manufacturers and associations.' },
-    { name: 'Dividend Finance', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'Y', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'Prime', creditFico: 'N/A', minTicket: 'N/A', maxTicket: '100000', pricing: 'N/A', bankPartners: 'Fifth Third Bank', partners: 'Solar installers, home improvement contractors.' },
-    { name: 'RenoFi', type: 'Aggregator', verticals: 'HI', unsecured: 'N', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'Y', bnpl: 'N', onboard: 'Contact us', creditCat: 'N/A', creditFico: '680+', minTicket: 'N/A', maxTicket: '750000', pricing: 'N/A', bankPartners: 'Multiple lending banks', partners: 'Always free for contractors.' },
-    { name: 'Sunbit', type: 'Lender Platform', verticals: 'HI, MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: 'N/A', maxTicket: '20000', pricing: 'No late/origination fees', bankPartners: 'TAB Bank (Sunbit Visa)', partners: 'Various service providers.' },
-    { name: 'GreenSky', type: 'Aggregator', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: 'N/A', maxTicket: '100000', pricing: 'N/A', bankPartners: 'Synovus Bank, Merrick Bank, etc.', partners: 'Large network of banks/lenders.' },
-    { name: 'Sunlight Financial', type: 'Aggregator', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: 'N/A', maxTicket: '100000', pricing: 'Flexible terms, promotional plans, 40+ loan options.', bankPartners: 'Cross River Bank, Technology Credit Union, etc.', partners: 'Works with solar installers, HVAC, roofing, etc. via Orange® portal.' },
-    { name: 'ChargeAfter', type: 'Aggregator', verticals: 'HI, MED', unsecured: 'Y', secured: 'N', vCards: 'Y', bizCap: 'Y', heloc: 'Y', bnpl: 'Y', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '250', maxTicket: '100000', pricing: 'Dynamic waterfall financing.', bankPartners: '40+ Lenders (Citi Retail Services, Wells Fargo, Synchrony, etc.)', partners: 'Integrates with Shopify, Magento, BigCommerce; omnichannel support.' },
-    { name: 'Acorn Finance', type: 'Marketplace', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'Y', heloc: 'Y', bnpl: 'N', onboard: 'Instant', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '1000', maxTicket: '500000', pricing: 'No dealer fees, no subscription fees; revenue from lender-paid commission.', bankPartners: 'LightStream, Upgrade, Reprise, SoFi, Best Egg, Prosper, etc.', partners: 'Integrated with FieldPulse, JobTread.' },
-    { name: 'Synchrony Financial', type: 'Lender Platform', verticals: 'HI, MED', unsecured: 'Y', secured: 'N/A', vCards: 'Y', bizCap: 'Y', heloc: 'N', bnpl: 'Y', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '100', maxTicket: '100000', pricing: 'Promotional financing, extended terms, private-label credit programs.', bankPartners: 'Synchrony Bank', partners: 'Integrated with Shopify, WooCommerce, BigCommerce, Payzer, ServiceTitan.' },
-    { name: 'Regions Bank', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'Contact us', creditCat: 'Prime, Near Prime', creditFico: 'N/A', minTicket: '1000', maxTicket: '100000', pricing: 'Fixed-rate installment loans, Same-As-Cash promos, no dealer fees on some plans.', bankPartners: 'Regions Bank / EnerBank USA', partners: 'Contractors must have ≥$500K annual revenue & ≥3 years in business.' },
-    { name: 'Hearth', type: 'Marketplace', verticals: 'HI', unsecured: 'Y', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '1000', maxTicket: '100000', pricing: 'Annual subscription tiered plans (Essentials, Pro, Elite); no dealer fees.', bankPartners: '12–17+ lending partners', partners: 'Integrations via mobile app, digital marketing tools, invoicing.' },
-    { name: 'Upgrade', type: 'Marketplace', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '50', maxTicket: '25000', pricing: 'No late/payment fees; fixed installments; APR 0–36%.', bankPartners: 'Multiple lending partners', partners: 'Used by travel brands (Carnival, Southwest, etc.), retail, hospitality.' },
-    { name: 'Wells Fargo', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'Contact us', creditCat: 'Prime, Near Prime', creditFico: 'N/A', minTicket: '1000', maxTicket: '150000', pricing: 'Promotional financing options, fast approvals under 10 seconds.', bankPartners: 'Wells Fargo', partners: 'Partnered with ServiceTitan. Requires minimum financed purchase volume.' },
-    { name: 'HFS Financial', type: 'Aggregator', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'N/A', creditFico: 'N/A', minTicket: '1000', maxTicket: '300000', pricing: 'Low fixed rates, direct-to-consumer funding, terms up to 20 years.', bankPartners: 'Unaffiliated third-party lender network', partners: '“Check My Rate” widget, contractor success manager.' },
+// Raw Data - In a real app, this would be fetched from an API
+const rawData = [
+    { name: 'Goodleap', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'Y', bnpl: 'N', merchants: 5000, pricing: 'Offer 0% MDR to merchant, usually ranges between 3-17%, Solar 20-35%', partners: 'Thousands of contractor/business partners nationwide.', bankPartners: 'Direct Lender', excluded: 'Excludes non-owner-occupied homes, luxury projects like pools/spas.' },
+    { name: 'Momnt', type: 'Aggregator', verticals: 'HI, MED', unsecured: 'Y', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', merchants: 3000, pricing: '0%–23.99% APR; same-as-cash and fixed payment promos; competitive merchant fees.', partners: 'Extensive SaaS, lender, and merchant integrations via API.', bankPartners: 'Multiple', excluded: 'Utility-scale or commercial projects, general cash-out consumer lending.' },
+    { name: 'Avvance (U.S. Bank)', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', merchants: null, pricing: 'APR 0%–24.99%, 3–60 month terms, instant approval, no hidden fees.', partners: 'Integrated with merchant portal platforms (Pure Finance, talech).', bankPartners: 'U.S. Bank', excluded: 'Non-home improvement, commercial, or cash-out refinance loans.' },
+    { name: 'ClarityPay', type: 'Lender Platform', verticals: 'HI, MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', merchants: null, pricing: 'Transparent monthly payments, 0% promo plans, 4-week to 84-month terms.', partners: 'API/commerce platform integration, full technical support.', bankPartners: 'N/A', excluded: 'Commercial loans, pure business capital.' },
+    { name: 'Covered Care', type: 'Lender Platform', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', merchants: null, pricing: 'APR 0%–36%, up to 72 months, promo 0% for 3–36 mo.', partners: 'API and portal integrations for practices.', bankPartners: 'N/A', excluded: 'Non-healthcare, commercial/business lending.' },
+    { name: 'hfd', type: 'Lender Platform', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', merchants: 11000, pricing: 'APR 5.99%–29.99%; clear payments, no hidden fees.', partners: 'All-in-one platform, rapid practice onboarding.', bankPartners: 'Hatch Bank', excluded: 'Non-healthcare, business/commercial or home improvement.' },
+    { name: 'Cherry', type: 'Lender Platform', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', merchants: 40000, pricing: '“True 0% APR,” 4 interest-free payments.', partners: 'Exclusive application link for providers.', bankPartners: 'Lead Bank', excluded: 'Non-Medical' },
+    { name: 'PatientFi', type: 'Aggregator', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', merchants: 1000, pricing: '0% APR promotional plans.', partners: 'Co-marketing with Allergan Aesthetics, TransUnion, etc.', bankPartners: 'Connexus CU, Optum Bank, etc.', excluded: 'Non-Medical' },
+    { name: 'Proceed Finance', type: 'Aggregator', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', merchants: null, pricing: 'Long-term financing (up to 12 years); APR starting at 3.99%.', partners: 'Works with dental and medical providers directly.', bankPartners: 'Optum Bank, Security First Bank, WebBank', excluded: 'Non-Medical' },
+    { name: 'PowerPay', type: 'Aggregator', verticals: 'HI, MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', merchants: 12000, pricing: 'Rates starting around 6.99%–8.99% APR with staged funding.', partners: 'Network of contractors and dealers.', bankPartners: 'American Heritage CU, FinWise Bank, etc.', excluded: null },
+    { name: 'Foundation Finance', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', merchants: 12000, pricing: '12–240-month terms; deferred/same-as-cash promos.', partners: 'Provides marketing toolkits and training.', bankPartners: 'Direct Lender', excluded: 'Unlicensed contractor services not permitted.' },
+    { name: 'FTL Finance', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'Y', heloc: 'N', bnpl: 'N', merchants: null, pricing: 'No fees; free to join.', partners: 'Distribution partners (Johnstone Supply, ACCA, etc.).', bankPartners: 'FTL Capital Partners', excluded: null },
+    { name: 'Service Finance (Truist)', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'Y', heloc: 'N', bnpl: 'N', merchants: 14000, pricing: null, partners: '250+ manufacturers and associations.', bankPartners: 'Truist Bank', excluded: null },
+    { name: 'Sunbit', type: 'Lender Platform', verticals: 'HI, MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', merchants: 27000, pricing: 'No late/origination fees.', partners: 'Various service providers.', bankPartners: 'TAB Bank (Sunbit Visa)', excluded: null },
+    { name: 'GreenSky', type: 'Aggregator', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', merchants: null, pricing: null, partners: 'Large network of banks/lenders.', bankPartners: 'Synovus Bank, Merrick Bank, etc.', excluded: null },
+    { name: 'Sunlight Financial', type: 'Aggregator', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', merchants: 1850, pricing: 'Flexible terms, promotional plans, 40+ loan options.', partners: 'Works with solar installers, HVAC, roofing, etc.', bankPartners: 'Cross River Bank, Technology Credit Union, etc.', excluded: null },
+    { name: 'ChargeAfter', type: 'Aggregator', verticals: 'HI, MED', unsecured: 'Y', secured: 'N', vCards: 'Y', bizCap: 'Y', heloc: 'Y', bnpl: 'Y', merchants: 2000, pricing: 'Dynamic waterfall financing.', partners: 'Integrates with Shopify, Magento, etc.', bankPartners: '40+ Lenders (Citi, Wells Fargo, Synchrony, etc.)', excluded: null },
+    { name: 'Acorn Finance', type: 'Marketplace', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'Y', heloc: 'Y', bnpl: 'N', merchants: 100000, pricing: 'No dealer fees; revenue from lender commission.', partners: 'Integrated with FieldPulse, JobTread.', bankPartners: 'LightStream, Upgrade, SoFi, etc.', excluded: null },
+    { name: 'Synchrony Financial', type: 'Lender Platform', verticals: 'HI, MED', unsecured: 'Y', secured: 'N/A', vCards: 'Y', bizCap: 'Y', heloc: 'N', bnpl: 'Y', merchants: 400000, pricing: 'Promotional financing, private-label credit programs.', partners: 'Integrated with Shopify, ServiceTitan, etc.', bankPartners: 'Synchrony Bank', excluded: null },
+    { name: 'Hearth', type: 'Marketplace', verticals: 'HI', unsecured: 'Y', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', merchants: 20000, pricing: 'Annual subscription tiered plans; no dealer fees.', partners: 'Integrations via mobile app, digital marketing tools.', bankPartners: '12–17+ lending partners', excluded: null },
+    { name: 'Wells Fargo', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', merchants: null, pricing: 'Promotional financing, fast approvals.', partners: 'Partnered with ServiceTitan.', bankPartners: 'Wells Fargo', excluded: 'Requires minimum financed purchase volume.' },
 ];
 
-function renderCompetitors(filteredData) {
-    const competitorList = document.getElementById('competitorList');
-    const noResults = document.getElementById('noResults');
-    competitorList.innerHTML = '';
+const productFields = ['unsecured', 'secured', 'vCards', 'bizCap', 'heloc', 'bnpl'];
+const productLabels = {
+    unsecured: 'Unsecured', secured: 'Secured', vCards: 'Virtual Cards', bizCap: 'Business Capital', heloc: 'HELOC', bnpl: 'BNPL'
+};
 
-    if (filteredData.length === 0) {
-        noResults.classList.remove('hidden');
-        return;
-    }
-    noResults.classList.add('hidden');
-
-    filteredData.forEach(comp => {
-        const item = document.createElement('div');
-        item.className = 'accordion-item bg-white rounded-xl shadow-md transition-shadow hover:shadow-lg';
-        item.setAttribute('data-name', comp.name.toLowerCase());
-        item.setAttribute('data-model', comp.type);
-        item.setAttribute('data-verticals', comp.verticals);
-
-        let verticalsHTML = '';
-        if (comp.verticals.includes('HI')) {
-            verticalsHTML += `<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Home Improvement</span> `;
+// Data Processing
+const competitors = rawData.map(c => {
+    let productBreadth = 0;
+    let productsOffered = [];
+    productFields.forEach(p => {
+        if (c[p] === 'Y') {
+            productBreadth++;
+            productsOffered.push(productLabels[p]);
         }
-        if (comp.verticals.includes('MED')) {
-            verticalsHTML += `<span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Medical</span>`;
+    });
+    return { ...c, productBreadth, productsOffered };
+});
+
+const colors = {
+    'Lender Platform': 'rgba(59, 130, 246, 0.8)', // blue-500
+    'Aggregator': 'rgba(16, 185, 129, 0.8)',    // emerald-500
+    'Marketplace': 'rgba(249, 115, 22, 0.8)',   // orange-500
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.nav-tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    // Chart instances
+    let marketDistChart, productCompChart, marketPosChart;
+
+    function switchTab(tabId) {
+        tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tabId));
+        tabContents.forEach(c => c.classList.toggle('active', c.id === tabId));
+        
+        // Lazy load charts
+        if (tabId === 'overview' && !marketDistChart) initOverviewTab();
+        if (tabId === 'comparison' && !productCompChart) initComparisonTab();
+        if (tabId === 'positioning' && !marketPosChart) initPositioningTab();
+    }
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+    });
+
+    // --- INITIALIZATION ---
+    function init() {
+        initOverviewTab();
+        initProfilesTab();
+        // Other tabs are lazy loaded
+        initComparisonTab(); // Pre-load for smoother experience
+        initPositioningTab();
+        initInsightsTab();
+        initModal();
+    }
+
+    // --- OVERVIEW TAB ---
+    function initOverviewTab() {
+        const total = competitors.length;
+        document.getElementById('kpi-total-companies').textContent = total;
+        
+        const calcPercentage = (field) => Math.round(competitors.filter(c => c[field] === 'Y').length / total * 100);
+        document.getElementById('kpi-unsecured').textContent = `${calcPercentage('unsecured')}%`;
+        document.getElementById('kpi-heloc').textContent = `${calcPercentage('heloc')}%`;
+        document.getElementById('kpi-bnpl').textContent = `${calcPercentage('bnpl')}%`;
+        document.getElementById('kpi-vcards').textContent = `${calcPercentage('vCards')}%`;
+        
+        const avgProducts = competitors.reduce((sum, c) => sum + c.productBreadth, 0) / total;
+        document.getElementById('kpi-avg-products').textContent = avgProducts.toFixed(1);
+
+        const typeCounts = competitors.reduce((acc, c) => {
+            acc[c.type] = (acc[c.type] || 0) + 1;
+            return acc;
+        }, {});
+        
+        const ctx = document.getElementById('marketDistributionChart').getContext('2d');
+        marketDistChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(typeCounts),
+                datasets: [{
+                    data: Object.values(typeCounts),
+                    backgroundColor: Object.keys(typeCounts).map(type => colors[type] || '#cccccc'),
+                    borderColor: '#f1f5f9',
+                    borderWidth: 4,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { position: 'bottom' } }
+            }
+        });
+    }
+
+    // --- PROFILES TAB ---
+    function initProfilesTab() {
+        const tableBody = document.getElementById('profilesTableBody');
+        const searchInput = document.getElementById('profilesSearch');
+        
+        function renderTable(filterText = '') {
+            tableBody.innerHTML = '';
+            competitors
+                .filter(c => c.name.toLowerCase().includes(filterText.toLowerCase()))
+                .forEach(c => {
+                    const row = document.createElement('tr');
+                    row.className = 'border-b hover:bg-slate-50 cursor-pointer';
+                    row.innerHTML = `
+                        <td class="px-6 py-4 font-bold text-slate-900">${c.name}</td>
+                        <td class="px-6 py-4"><span style="background-color:${colors[c.type] || '#cccccc'}80; color:${colors[c.type] ? 'white' : 'black'}" class="px-2 py-1 text-xs font-semibold rounded-full">${c.type}</span></td>
+                        <td class="px-6 py-4">${c.verticals}</td>
+                        <td class="px-6 py-4 text-xs">${c.productsOffered.join(', ')}</td>
+                        <td class="px-6 py-4 text-right font-medium">${c.merchants ? c.merchants.toLocaleString() : 'N/A'}</td>
+                    `;
+                    row.addEventListener('click', () => showCompanyModal(c));
+                    tableBody.appendChild(row);
+                });
         }
         
-        const formatBool = (val) => val === 'Y' ? '✅ Yes' : (val === 'N' ? '❌ No' : 'N/A');
+        searchInput.addEventListener('input', () => renderTable(searchInput.value));
+        renderTable();
+    }
 
-        item.innerHTML = `
-            <div class="accordion-trigger p-4 flex justify-between items-center cursor-pointer">
-                <div class="flex items-center gap-4">
-                    <h3 class="text-lg font-bold text-slate-900">${comp.name}</h3>
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full hidden sm:inline">${comp.type}</span>
-                </div>
-                <div class="flex items-center">
-                    <div class="mr-4 hidden md:block text-right">${verticalsHTML}</div>
-                    <svg class="chevron-icon w-6 h-6 text-slate-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </div>
-            </div>
-            <div class="accordion-content">
-                <div class="p-6 border-t border-slate-200 bg-slate-50/70">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 text-sm">
-                        
-                        <div>
-                            <h4 class="font-semibold text-slate-500 uppercase tracking-wider text-xs mb-2">Loan Products</h4>
-                            <p><span class="font-medium text-slate-600">Unsecured:</span> ${formatBool(comp.unsecured)}</p>
-                            <p><span class="font-medium text-slate-600">Secured:</span> ${formatBool(comp.secured)}</p>
-                            <p><span class="font-medium text-slate-600">HELOC:</span> ${formatBool(comp.heloc)}</p>
-                            <p><span class="font-medium text-slate-600">BNPL:</span> ${formatBool(comp.bnpl)}</p>
-                            <p><span class="font-medium text-slate-600">Virtual Cards:</span> ${formatBool(comp.vCards)}</p>
-                            <p><span class="font-medium text-slate-600">Business Capital:</span> ${formatBool(comp.bizCap)}</p>
-                        </div>
+    // --- MODAL ---
+    function initModal() {
+        const modal = document.getElementById('companyModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const overlay = modal.querySelector('.modal-overlay');
 
-                        <div>
-                            <h4 class="font-semibold text-slate-500 uppercase tracking-wider text-xs mb-2">Credit & Terms</h4>
-                            <p><span class="font-medium text-slate-600">Spectrum:</span> ${comp.creditCat}</p>
-                            <p><span class="font-medium text-slate-600">Min FICO:</span> ${comp.creditFico || 'N/A'}</p>
-                            <p><span class="font-medium text-slate-600">Ticket Size:</span> $${comp.minTicket || 'N/A'} - $${comp.maxTicket || 'N/A'}</p>
-                            <p><span class="font-medium text-slate-600">Onboarding:</span> <span class="font-bold ${comp.onboard === 'Instant' ? 'text-green-600' : ''}">${comp.onboard}</span></p>
-                        </div>
-                        
-                        <div class="md:col-span-2 lg:col-span-1">
-                             <h4 class="font-semibold text-slate-500 uppercase tracking-wider text-xs mb-2">Partners</h4>
-                             <p class="text-slate-700">${comp.partners || 'N/A'}</p>
-                             ${comp.bankPartners ? `<p class="mt-2"><span class="font-medium text-slate-600">Bank Partners:</span> ${comp.bankPartners}</p>` : ''}
-                        </div>
+        closeModalBtn.addEventListener('click', () => hideCompanyModal());
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) hideCompanyModal();
+        });
+    }
 
-                        <div class="col-span-1 md:col-span-2 lg:col-span-3">
-                             <h4 class="font-semibold text-slate-500 uppercase tracking-wider text-xs mb-2">Pricing & Notes</h4>
-                             <p class="text-slate-700">${comp.pricing || 'N/A'}</p>
-                        </div>
+    function showCompanyModal(company) {
+        document.getElementById('modal-title').textContent = company.name;
+        const modalBody = document.getElementById('modal-body');
+        modalBody.innerHTML = `
+            <div class="space-y-6">
+                <div>
+                    <h4 class="font-semibold text-slate-500 uppercase text-xs tracking-wider mb-2">Key Details</h4>
+                    <div class="grid grid-cols-2 gap-4 text-sm bg-slate-50 p-4 rounded-lg">
+                        <p><span class="font-semibold">Type:</span> ${company.type}</p>
+                        <p><span class="font-semibold">Verticals:</span> ${company.verticals}</p>
+                        <p class="col-span-2"><span class="font-semibold">Products:</span> ${company.productsOffered.join(', ')}</p>
+                        <p><span class="font-semibold">Merchant Count:</span> ${company.merchants ? company.merchants.toLocaleString() : 'N/A'}</p>
                     </div>
+                </div>
+                 <div>
+                    <h4 class="font-semibold text-slate-500 uppercase text-xs tracking-wider mb-2">Pricing</h4>
+                    <p class="text-sm bg-slate-50 p-4 rounded-lg">${company.pricing || 'Not specified.'}</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-500 uppercase text-xs tracking-wider mb-2">Partnerships</h4>
+                    <div class="text-sm bg-slate-50 p-4 rounded-lg">
+                        <p><span class="font-semibold">Channel/Distribution:</span> ${company.partners || 'Not specified.'}</p>
+                        <p class="mt-2"><span class="font-semibold">Bank Partners:</span> ${company.bankPartners || 'Not specified.'}</p>
+                    </div>
+                </div>
+                 <div>
+                    <h4 class="font-semibold text-slate-500 uppercase text-xs tracking-wider mb-2">Excluded Verticals / Notes</h4>
+                    <p class="text-sm bg-slate-50 p-4 rounded-lg">${company.excluded || 'None specified.'}</p>
                 </div>
             </div>
         `;
-        competitorList.appendChild(item);
-    });
+        document.getElementById('companyModal').classList.remove('hidden');
+        setTimeout(() => {
+            document.querySelector('.modal-container').classList.remove('scale-95');
+            document.querySelector('.modal-overlay').classList.remove('opacity-0');
+        }, 10);
+    }
 
-    // Re-attach event listeners
-    attachAccordionListeners();
-}
-
-function attachAccordionListeners() {
-    document.querySelectorAll('.accordion-trigger').forEach(trigger => {
-        trigger.addEventListener('click', (e) => {
-            // Allow clicking buttons inside trigger without closing
-            if (e.target.tagName === 'BUTTON') return;
-            trigger.parentElement.classList.toggle('active');
+    function hideCompanyModal() {
+        document.querySelector('.modal-container').classList.add('scale-95');
+        document.querySelector('.modal-overlay').classList.add('opacity-0');
+        setTimeout(() => document.getElementById('companyModal').classList.add('hidden'), 300);
+    }
+    
+    // --- COMPARISON TAB ---
+    function initComparisonTab() {
+        const filtersContainer = document.getElementById('product-filters');
+        
+        Object.entries(productLabels).forEach(([key, label]) => {
+            filtersContainer.innerHTML += `
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" data-product="${key}" class="product-filter rounded text-teal-500 focus:ring-teal-500">
+                    <span>${label}</span>
+                </label>
+            `;
         });
-    });
-}
 
-function filterCompetitors() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const activeModel = document.querySelector('#modelFilters .filter-btn.active').dataset.filter;
-    const activeVertical = document.querySelector('#verticalFilters .filter-btn.active').dataset.filter;
-
-    const filteredData = competitors.filter(comp => {
-        const nameMatch = comp.name.toLowerCase().includes(searchTerm);
-        const modelMatch = activeModel === 'all' || comp.type === activeModel;
-        const verticalMatch = activeVertical === 'all' || comp.verticals.includes(activeVertical);
-        return nameMatch && modelMatch && verticalMatch;
-    });
-
-    renderCompetitors(filteredData);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Initial render
-    renderCompetitors(competitors);
-
-    // Search listener
-    document.getElementById('searchInput').addEventListener('input', filterCompetitors);
-
-    // Filter button listeners
-    document.querySelectorAll('#modelFilters .filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('#modelFilters .filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            filterCompetitors();
+        const ctx = document.getElementById('productComparisonChart').getContext('2d');
+        productCompChart = new Chart(ctx, {
+            type: 'bar',
+            data: { labels: [], datasets: [] },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                scales: { x: { stacked: true }, y: { stacked: true } },
+                plugins: { legend: { display: false } }
+            }
         });
-    });
 
-     document.querySelectorAll('#verticalFilters .filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('#verticalFilters .filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            filterCompetitors();
+        document.querySelectorAll('.product-filter').forEach(cb => {
+            cb.addEventListener('change', updateComparisonChart);
         });
-    });
+
+        updateComparisonChart();
+    }
+
+    function updateComparisonChart() {
+        const activeFilters = Array.from(document.querySelectorAll('.product-filter:checked')).map(cb => cb.dataset.product);
+        
+        const filteredCompetitors = competitors.filter(c => {
+            return activeFilters.length === 0 || activeFilters.every(p => c[p] === 'Y');
+        });
+
+        productCompChart.data.labels = filteredCompetitors.map(c => c.name);
+        productCompChart.data.datasets = [{
+            label: 'Product Count',
+            data: filteredCompetitors.map(c => c.productBreadth),
+            backgroundColor: filteredCompetitors.map(c => colors[c.type] || '#cccccc')
+        }];
+        productCompChart.update();
+    }
+    
+    // --- POSITIONING TAB ---
+    function initPositioningTab() {
+        const data = {
+            datasets: Object.entries(colors).map(([type, color]) => ({
+                label: type,
+                data: competitors
+                    .filter(c => c.type === type && c.merchants > 0)
+                    .map(c => ({
+                        x: c.productBreadth,
+                        y: c.merchants,
+                        r: Math.max(5, Math.log(c.merchants) * 2), // Bubble size
+                        name: c.name
+                    })),
+                backgroundColor: color,
+            }))
+        };
+        
+        const ctx = document.getElementById('marketPositioningChart').getContext('2d');
+        marketPosChart = new Chart(ctx, {
+            type: 'bubble',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        type: 'logarithmic',
+                        title: { display: true, text: 'Market Reach (Merchant Count - Log Scale)' }
+                    },
+                    x: {
+                        title: { display: true, text: 'Product Breadth (Number of Products)' }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const d = context.raw;
+                                return `${d.name}: ${d.x} Products, ${d.y.toLocaleString()} Merchants`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // --- INSIGHTS TAB ---
+    function initInsightsTab() {
+        const container = document.getElementById('insights-container');
+        let insights = [];
+
+        // Insight 1: Richest Product Offering
+        const mostProducts = [...competitors].sort((a,b) => b.productBreadth - a.productBreadth)[0];
+        insights.push({ title: "Broadest Offering", text: `With ${mostProducts.productBreadth} distinct products, <strong>${mostProducts.name}</strong> has one of the most comprehensive offerings, spanning multiple categories.`});
+
+        // Insight 2: Largest Merchant Network
+        const mostMerchants = [...competitors].filter(c => c.merchants).sort((a,b) => b.merchants - a.merchants)[0];
+        insights.push({ title: "Largest Reach", text: `<strong>${mostMerchants.name}</strong> reports the largest merchant network with <strong>${mostMerchants.merchants.toLocaleString()}</strong> partners, indicating significant market penetration.`});
+
+        // Insight 3: HELOC Opportunity
+        const helocPlayers = competitors.filter(c => c.heloc === 'Y');
+        insights.push({ title: "HELOC Opportunity", text: `Only <strong>${helocPlayers.length} companies</strong> in this dataset, including ${helocPlayers[0].name} and ${helocPlayers[1].name}, currently offer HELOCs, signaling potential whitespace in the market.`});
+        
+        // Insight 4: "No Dealer Fee" Model
+        const noFeePlayers = competitors.filter(c => c.pricing && c.pricing.toLowerCase().includes('no dealer fee'));
+        insights.push({ title: "The 'No Fee' Angle", text: `<strong>${noFeePlayers.length} players</strong> like ${noFeePlayers.map(c => `<strong>${c.name}</strong>`).join(' and ')} are leveraging a "no dealer fee" model, a highly attractive value proposition for merchants.`});
+        
+        // Insight 5: Instant Onboarding
+        const instantOnboard = competitors.filter(c => c.onboard === 'Instant').length;
+        insights.push({ title: "Need for Speed", text: `At least <strong>${instantOnboard} competitors</strong> offer 'Instant' onboarding, highlighting the market's demand for fast, frictionless merchant activation.`});
+
+        // Insight 6: Dominant Model
+        const typeCounts = competitors.reduce((acc, c) => ({...acc, [c.type]:(acc[c.type]||0)+1}), {});
+        const dominantType = Object.keys(typeCounts).reduce((a, b) => typeCounts[a] > typeCounts[b] ? a : b);
+        insights.push({ title: "Dominant Model", text: `The <strong>${dominantType}</strong> model is the most common in the space, representing over ${Math.round(typeCounts[dominantType]/competitors.length*100)}% of the analyzed companies.`});
+        
+        container.innerHTML = insights.map(insight => `
+            <div class="kpi-card">
+                <h4 class="font-bold text-lg text-slate-800 mb-2">${insight.title}</h4>
+                <p class="text-slate-600 text-sm">${insight.text}</p>
+            </div>
+        `).join('');
+    }
+
+    // Start the app
+    init();
 });
-
 </script>
 </body>
 </html>
+
+
 
