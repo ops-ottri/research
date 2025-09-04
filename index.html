@@ -1,218 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ottri Competitive Landscape</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body{font-family:'Inter',sans-serif;background-color:#f8fafc}
-    .gradient-text{
-      background:linear-gradient(to right,#3b82f6,#14b8a6);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent
-    }
-    .card{
-      background-color:#fff;border-radius:.75rem;
-      box-shadow:0 4px 6px -1px rgb(0 0 0 / .1),0 2px 4px -2px rgb(0 0 0 / .1);
-      transition:transform .2s ease-in-out,box-shadow .2s ease-in-out
-    }
-    .card:hover{transform:translateY(-5px);box-shadow:0 10px 15px -3px rgb(0 0 0 / .1),0 4px 6px -4px rgb(0 0 0 / .1)}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ottri Competitive Landscape</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #3b82f6, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        /* Accordion Styles */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 1000px; /* Adjust as needed */
+            transition: max-height 0.5s ease-in;
+        }
+        .accordion-item.active .chevron-icon {
+            transform: rotate(180deg);
+        }
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: background-color 0.2s, color 0.2s;
+            border: 1px solid #e2e8f0;
+            background-color: white;
+            color: #334155;
+        }
+        .filter-btn.active {
+            background-color: #0f766e; /* teal-700 */
+            color: white;
+            border-color: #0f766e;
+        }
+    </style>
 </head>
-<body class="text-slate-800 leading-relaxed">
-  <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+<body class="text-slate-800">
 
-    <!-- Header -->
-    <header class="text-center mb-12">
-      <h1 class="text-4xl md:text-5xl font-bold mb-2">
-        Welcome to the <span class="gradient-text">Embedded Finance Landscape</span>
-      </h1>
-      <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-        An interactive guide for the Ottri team to understand our competitors and the market we're shaping.
-      </p>
-    </header>
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-2">
+                Welcome to the <span class="gradient-text">Embedded Finance Landscape</span>
+            </h1>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto">An interactive guide for the Ottri team to understand our competitors and the market we're shaping.</p>
+        </header>
 
-    <!-- Section 1: The 3 Core Business Models -->
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold text-center mb-8">The 3 Core Business Models</h2>
-      <!-- stretch children so card bottoms align without changing spacing -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-        <!-- Card 1 -->
-        <div class="card p-6 flex flex-col h-full">
-          <div class="flex items-center mb-4">
-            <div class="mr-4 rounded-full bg-blue-100 w-12 h-12 grid place-items-center shrink-0">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <!-- Section 1: The 3 Core Business Models -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8">The 3 Core Business Models</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                 <!-- Card 1: Lender Platform -->
+                <div class="card p-6 flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-blue-100 rounded-full mr-4">
+                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Lender Platform</h3>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-slate-600 mb-4">Offers one financing product from a single source (often a bank). Simple and consistent, but with lower approval rates.</p>
+                        <div class="space-y-2 text-sm">
+                            <p><span class="font-semibold text-teal-600">Pros:</span> Simple, consistent branding.</p>
+                            <p><span class="font-semibold text-red-500">Cons:</span> Lower approval rates, less flexibility.</p>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <p class="font-semibold text-sm">Key Players:</p>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Goodleap</span>
+                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Synchrony</span>
+                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Service Finance</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2: Aggregator -->
+                <div class="card p-6 flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-teal-100 rounded-full mr-4">
+                           <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Aggregator</h3>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-slate-600 mb-4">One platform connects to a curated network of lenders, creating a "waterfall" to boost approval chances.</p>
+                         <div class="space-y-2 text-sm">
+                            <p><span class="font-semibold text-teal-600">Pros:</span> Higher approval rates, more options.</p>
+                            <p><span class="font-semibold text-red-500">Cons:</span> Can be more complex to manage.</p>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <p class="font-semibold text-sm">Key Players:</p>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Momnt</span>
+                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">ChargeAfter</span>
+                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">GreenSky</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3: Marketplace -->
+                <div class="card p-6 flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-indigo-100 rounded-full mr-4">
+                            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold">Marketplace</h3>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="text-slate-600 mb-4">An open platform where multiple lenders compete. Often free for the merchant, with a "no dealer fee" model.</p>
+                        <div class="space-y-2 text-sm">
+                            <p><span class="font-semibold text-teal-600">Pros:</span> "No dealer fees" is a huge selling point.</p>
+                            <p><span class="font-semibold text-red-500">Cons:</span> Cost passed to consumer (higher rates).</p>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <p class="font-semibold text-sm">Key Players:</p>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Acorn Finance</span>
+                            <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Hearth</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h3 class="text-xl font-bold">Lender Platform</h3>
-          </div>
-          <p class="text-slate-600 mb-4">Offers one financing product from a single source (often a bank). Simple and consistent, but with lower approval rates.</p>
-          <div class="space-y-2 text-sm">
-            <p><span class="font-semibold text-teal-600">Pros:</span> Simple, consistent branding.</p>
-            <p><span class="font-semibold text-red-500">Cons:</span> Lower approval rates, less flexibility.</p>
-          </div>
-          <div class="mt-auto pt-4">
-            <p class="font-semibold text-sm">Key Players:</p>
-            <div class="flex flex-wrap gap-2 mt-2">
-              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Goodleap</span>
-              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Synchrony</span>
-              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Service Finance</span>
+        </section>
+
+        <!-- Section 2: Competitor Directory -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8">Competitor Directory</h2>
+            
+            <!-- Filters -->
+            <div class="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-md mb-8 sticky top-4 z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    <!-- Search -->
+                    <div class="lg:col-span-1">
+                        <input type="text" id="searchInput" placeholder="Search by company name..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition">
+                    </div>
+                    <!-- Filters -->
+                    <div class="lg:col-span-2 flex flex-wrap items-center gap-4">
+                        <div id="modelFilters" class="flex flex-wrap items-center gap-2">
+                            <span class="font-semibold">Model:</span>
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="Lender Platform">Lender Platform</button>
+                            <button class="filter-btn" data-filter="Aggregator">Aggregator</button>
+                            <button class="filter-btn" data-filter="Marketplace">Marketplace</button>
+                        </div>
+                         <div id="verticalFilters" class="flex flex-wrap items-center gap-2">
+                            <span class="font-semibold">Vertical:</span>
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="HI">HI</button>
+                            <button class="filter-btn" data-filter="MED">Medical</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Card 2 -->
-        <div class="card p-6 flex flex-col h-full">
-          <div class="flex items-center mb-4">
-            <div class="mr-4 rounded-full bg-teal-100 w-12 h-12 grid place-items-center shrink-0">
-              <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            <!-- Competitor List -->
+            <div id="competitorList" class="space-y-4">
+                <!-- Competitor data will be injected here by JavaScript -->
             </div>
-            <h3 class="text-xl font-bold">Aggregator</h3>
-          </div>
-          <p class="text-slate-600 mb-4">One platform connects to a curated network of lenders, creating a "waterfall" to boost approval chances.</p>
-          <div class="space-y-2 text-sm">
-            <p><span class="font-semibold text-teal-600">Pros:</span> Higher approval rates, more options.</p>
-            <p><span class="font-semibold text-red-500">Cons:</span> Can be more complex to manage.</p>
-          </div>
-          <div class="mt-auto pt-4">
-            <p class="font-semibold text-sm">Key Players:</p>
-            <div class="flex flex-wrap gap-2 mt-2">
-              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Momnt</span>
-              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">ChargeAfter</span>
-              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">GreenSky</span>
+             <p id="noResults" class="text-center text-slate-500 py-8 hidden">No competitors match the current filters.</p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 py-6 border-t border-slate-200">
+            <p class="text-slate-500">Ottri Internal Intelligence | September 2025</p>
+        </footer>
+    </div>
+
+<script>
+const competitors = [
+    { name: 'Goodleap', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'Y', bnpl: 'N', onboard: 'Contact us', creditCat: 'Prime, Near Prime', creditFico: '580+', minTicket: '1000', maxTicket: '125000', pricing: 'Offer 0% MDR to merchant, usually ranges between 3-17%, Solar 20-35%', partners: 'Thousands of contractor/business partners nationwide.' },
+    { name: 'Momnt', type: 'Aggregator', verticals: 'HI, MED', unsecured: 'Y', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: '580+', minTicket: '3100', maxTicket: '75000', pricing: '0%–23.99% APR; same-as-cash and fixed payment promos; competitive merchant fees.', partners: 'Extensive SaaS, lender, and merchant integrations via API, embedded platforms' },
+    { name: 'Avvance (U.S. Bank)', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'Contact us', creditCat: 'Prime, Near Prime', creditFico: '660+', minTicket: '300', maxTicket: '25000', pricing: 'APR 0%–24.99%, 3–60 month terms, instant approval, no hidden fees.', partners: 'Integrated with merchant portal platforms (Pure Finance, talech), API support' },
+    { name: 'ClarityPay', type: 'Lender Platform', verticals: 'HI, MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: '300+', minTicket: '100', maxTicket: '50000', pricing: 'Transparent monthly payments, clear fees, 0% promo plans, 4-week to 84-month terms.', partners: 'API/commerce platform integration, full technical support.' },
+    { name: 'Covered Care', type: 'Lender Platform', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: '300+', minTicket: '500', maxTicket: '25000', pricing: 'APR 0%–36%, up to 72 months, promo 0% for 3–36 mo.', partners: 'API and portal integrations for practices, SMS/email remote onboarding.' },
+    { name: 'hfd', type: 'Lender Platform', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: 'N/A', maxTicket: 'N/A', pricing: 'APR 5.99%–29.99%; clear payments, no hidden fees.', bankPartners: 'Hatch Bank', partners: 'All-in-one platform, rapid practice onboarding.' },
+    { name: 'Cherry', type: 'Lender Platform', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: 'N/A', maxTicket: '50000', pricing: '“True 0% APR,” “4 interest-free payments every 2 weeks” to installments up to 60 months.', bankPartners: 'Lead Bank', partners: 'Provider gets exclusive application link; patient approval in ~60 seconds.' },
+    { name: 'PatientFi', type: 'Aggregator', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '200', maxTicket: '50000', pricing: '0% APR promotional plans; no setup costs mentioned.', bankPartners: 'Connexus CU, Optum Bank, Pathways Financial CU, Suncoast CU', partners: 'Co-marketing and integrations (Allergan Aesthetics, TransUnion, etc.).' },
+    { name: 'Proceed Finance', type: 'Aggregator', verticals: 'MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'BAD', creditCat: 'Prime, Near Prime', creditFico: '600+', minTicket: '2500', maxTicket: '75000', pricing: 'Fixed-rate installment loans; long-term financing (up to 12 years); APR starting at 3.99%.', bankPartners: 'Optum Bank, Security First Bank (funding/servicing), WebBank', partners: 'Works with dental and medical providers directly.' },
+    { name: 'PowerPay', type: 'Aggregator', verticals: 'HI, MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Instant', creditCat: 'Near Prime, Prime', creditFico: '600+', minTicket: 'N/A', maxTicket: '100000', pricing: 'Rates starting around 6.99%–8.99% APR with staged funding and no dealer fees.', bankPartners: 'American Heritage CU, FinWise Bank, Synovus Bank, KeyBank', partners: 'Network includes contractors and dealers; partnerships with software/utilities.' },
+    { name: 'Foundation Finance', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Instant', creditCat: 'Full Spectrum', creditFico: '550+', minTicket: '1000', maxTicket: '100000', pricing: 'Fixed-rate installment loans; 12–240-month terms; no prepayment penalties; deferred/same-as-cash promos.', partners: 'Works directly with contractors/dealers; provides marketing toolkits.' },
+    { name: 'TGUC Financial', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Instant', creditCat: 'Full Spectrum', creditFico: '550+', minTicket: 'N/A', maxTicket: '100000', pricing: 'Flexible terms (up to 15 years), fast approval, low fixed rates.', partners: 'TGUC and CUCollaborate partnerships bring credit unions into their lending network.' },
+    { name: 'Aqua Finance', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: 'N/A', maxTicket: 'N/A', pricing: 'Fast approvals (60 seconds); no prepayment penalties; non-recourse to dealers.', partners: 'Partnerships with AppOne for Recreation dealers.' },
+    { name: 'FTL Finance', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'Y', heloc: 'N', bnpl: 'N', onboard: 'Instant', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '300', maxTicket: '35000', pricing: 'No fees; free to join.', bankPartners: 'FTL Capital Partners', partners: 'Distribution partners (Johnstone Supply, ACCA, EGIA, etc.).' },
+    { name: 'Service Finance (Truist)', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'Y', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'Prime', creditFico: 'N/A', minTicket: 'N/A', maxTicket: '100000', pricing: 'N/A', bankPartners: 'Truist Bank', partners: '250+ manufacturers and associations.' },
+    { name: 'Dividend Finance', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'Y', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'Prime', creditFico: 'N/A', minTicket: 'N/A', maxTicket: '100000', pricing: 'N/A', bankPartners: 'Fifth Third Bank', partners: 'Solar installers, home improvement contractors.' },
+    { name: 'RenoFi', type: 'Aggregator', verticals: 'HI', unsecured: 'N', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'Y', bnpl: 'N', onboard: 'Contact us', creditCat: 'N/A', creditFico: '680+', minTicket: 'N/A', maxTicket: '750000', pricing: 'N/A', bankPartners: 'Multiple lending banks', partners: 'Always free for contractors.' },
+    { name: 'Sunbit', type: 'Lender Platform', verticals: 'HI, MED', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: 'N/A', maxTicket: '20000', pricing: 'No late/origination fees', bankPartners: 'TAB Bank (Sunbit Visa)', partners: 'Various service providers.' },
+    { name: 'GreenSky', type: 'Aggregator', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: 'N/A', maxTicket: '100000', pricing: 'N/A', bankPartners: 'Synovus Bank, Merrick Bank, etc.', partners: 'Large network of banks/lenders.' },
+    { name: 'Sunlight Financial', type: 'Aggregator', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: 'N/A', maxTicket: '100000', pricing: 'Flexible terms, promotional plans, 40+ loan options.', bankPartners: 'Cross River Bank, Technology Credit Union, etc.', partners: 'Works with solar installers, HVAC, roofing, etc. via Orange® portal.' },
+    { name: 'ChargeAfter', type: 'Aggregator', verticals: 'HI, MED', unsecured: 'Y', secured: 'N', vCards: 'Y', bizCap: 'Y', heloc: 'Y', bnpl: 'Y', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '250', maxTicket: '100000', pricing: 'Dynamic waterfall financing.', bankPartners: '40+ Lenders (Citi Retail Services, Wells Fargo, Synchrony, etc.)', partners: 'Integrates with Shopify, Magento, BigCommerce; omnichannel support.' },
+    { name: 'Acorn Finance', type: 'Marketplace', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'Y', heloc: 'Y', bnpl: 'N', onboard: 'Instant', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '1000', maxTicket: '500000', pricing: 'No dealer fees, no subscription fees; revenue from lender-paid commission.', bankPartners: 'LightStream, Upgrade, Reprise, SoFi, Best Egg, Prosper, etc.', partners: 'Integrated with FieldPulse, JobTread.' },
+    { name: 'Synchrony Financial', type: 'Lender Platform', verticals: 'HI, MED', unsecured: 'Y', secured: 'N/A', vCards: 'Y', bizCap: 'Y', heloc: 'N', bnpl: 'Y', onboard: 'Contact us', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '100', maxTicket: '100000', pricing: 'Promotional financing, extended terms, private-label credit programs.', bankPartners: 'Synchrony Bank', partners: 'Integrated with Shopify, WooCommerce, BigCommerce, Payzer, ServiceTitan.' },
+    { name: 'Regions Bank', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'Contact us', creditCat: 'Prime, Near Prime', creditFico: 'N/A', minTicket: '1000', maxTicket: '100000', pricing: 'Fixed-rate installment loans, Same-As-Cash promos, no dealer fees on some plans.', bankPartners: 'Regions Bank / EnerBank USA', partners: 'Contractors must have ≥$500K annual revenue & ≥3 years in business.' },
+    { name: 'Hearth', type: 'Marketplace', verticals: 'HI', unsecured: 'Y', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '1000', maxTicket: '100000', pricing: 'Annual subscription tiered plans (Essentials, Pro, Elite); no dealer fees.', bankPartners: '12–17+ lending partners', partners: 'Integrations via mobile app, digital marketing tools, invoicing.' },
+    { name: 'Upgrade', type: 'Marketplace', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'BAD', creditCat: 'Full Spectrum', creditFico: 'N/A', minTicket: '50', maxTicket: '25000', pricing: 'No late/payment fees; fixed installments; APR 0–36%.', bankPartners: 'Multiple lending partners', partners: 'Used by travel brands (Carnival, Southwest, etc.), retail, hospitality.' },
+    { name: 'Wells Fargo', type: 'Lender Platform', verticals: 'HI', unsecured: 'Y', secured: 'Y', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'Y', onboard: 'Contact us', creditCat: 'Prime, Near Prime', creditFico: 'N/A', minTicket: '1000', maxTicket: '150000', pricing: 'Promotional financing options, fast approvals under 10 seconds.', bankPartners: 'Wells Fargo', partners: 'Partnered with ServiceTitan. Requires minimum financed purchase volume.' },
+    { name: 'HFS Financial', type: 'Aggregator', verticals: 'HI', unsecured: 'Y', secured: 'N', vCards: 'N', bizCap: 'N', heloc: 'N', bnpl: 'N', onboard: 'Contact us', creditCat: 'N/A', creditFico: 'N/A', minTicket: '1000', maxTicket: '300000', pricing: 'Low fixed rates, direct-to-consumer funding, terms up to 20 years.', bankPartners: 'Unaffiliated third-party lender network', partners: '“Check My Rate” widget, contractor success manager.' },
+];
+
+function renderCompetitors(filteredData) {
+    const competitorList = document.getElementById('competitorList');
+    const noResults = document.getElementById('noResults');
+    competitorList.innerHTML = '';
+
+    if (filteredData.length === 0) {
+        noResults.classList.remove('hidden');
+        return;
+    }
+    noResults.classList.add('hidden');
+
+    filteredData.forEach(comp => {
+        const item = document.createElement('div');
+        item.className = 'accordion-item bg-white rounded-xl shadow-md transition-shadow hover:shadow-lg';
+        item.setAttribute('data-name', comp.name.toLowerCase());
+        item.setAttribute('data-model', comp.type);
+        item.setAttribute('data-verticals', comp.verticals);
+
+        let verticalsHTML = '';
+        if (comp.verticals.includes('HI')) {
+            verticalsHTML += `<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Home Improvement</span> `;
+        }
+        if (comp.verticals.includes('MED')) {
+            verticalsHTML += `<span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Medical</span>`;
+        }
+        
+        const formatBool = (val) => val === 'Y' ? '✅ Yes' : (val === 'N' ? '❌ No' : 'N/A');
+
+        item.innerHTML = `
+            <div class="accordion-trigger p-4 flex justify-between items-center cursor-pointer">
+                <div class="flex items-center gap-4">
+                    <h3 class="text-lg font-bold text-slate-900">${comp.name}</h3>
+                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full hidden sm:inline">${comp.type}</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="mr-4 hidden md:block text-right">${verticalsHTML}</div>
+                    <svg class="chevron-icon w-6 h-6 text-slate-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
             </div>
-          </div>
-        </div>
+            <div class="accordion-content">
+                <div class="p-6 border-t border-slate-200 bg-slate-50/70">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 text-sm">
+                        
+                        <div>
+                            <h4 class="font-semibold text-slate-500 uppercase tracking-wider text-xs mb-2">Loan Products</h4>
+                            <p><span class="font-medium text-slate-600">Unsecured:</span> ${formatBool(comp.unsecured)}</p>
+                            <p><span class="font-medium text-slate-600">Secured:</span> ${formatBool(comp.secured)}</p>
+                            <p><span class="font-medium text-slate-600">HELOC:</span> ${formatBool(comp.heloc)}</p>
+                            <p><span class="font-medium text-slate-600">BNPL:</span> ${formatBool(comp.bnpl)}</p>
+                            <p><span class="font-medium text-slate-600">Virtual Cards:</span> ${formatBool(comp.vCards)}</p>
+                            <p><span class="font-medium text-slate-600">Business Capital:</span> ${formatBool(comp.bizCap)}</p>
+                        </div>
 
-        <!-- Card 3 -->
-        <div class="card p-6 flex flex-col h-full">
-          <div class="flex items-center mb-4">
-            <div class="mr-4 rounded-full bg-indigo-100 w-12 h-12 grid place-items-center shrink-0">
-              <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <div>
+                            <h4 class="font-semibold text-slate-500 uppercase tracking-wider text-xs mb-2">Credit & Terms</h4>
+                            <p><span class="font-medium text-slate-600">Spectrum:</span> ${comp.creditCat}</p>
+                            <p><span class="font-medium text-slate-600">Min FICO:</span> ${comp.creditFico || 'N/A'}</p>
+                            <p><span class="font-medium text-slate-600">Ticket Size:</span> $${comp.minTicket || 'N/A'} - $${comp.maxTicket || 'N/A'}</p>
+                            <p><span class="font-medium text-slate-600">Onboarding:</span> <span class="font-bold ${comp.onboard === 'Instant' ? 'text-green-600' : ''}">${comp.onboard}</span></p>
+                        </div>
+                        
+                        <div class="md:col-span-2 lg:col-span-1">
+                             <h4 class="font-semibold text-slate-500 uppercase tracking-wider text-xs mb-2">Partners</h4>
+                             <p class="text-slate-700">${comp.partners || 'N/A'}</p>
+                             ${comp.bankPartners ? `<p class="mt-2"><span class="font-medium text-slate-600">Bank Partners:</span> ${comp.bankPartners}</p>` : ''}
+                        </div>
+
+                        <div class="col-span-1 md:col-span-2 lg:col-span-3">
+                             <h4 class="font-semibold text-slate-500 uppercase tracking-wider text-xs mb-2">Pricing & Notes</h4>
+                             <p class="text-slate-700">${comp.pricing || 'N/A'}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h3 class="text-xl font-bold">Marketplace</h3>
-          </div>
-          <p class="text-slate-600 mb-4">An open platform where multiple lenders compete. Often free for the merchant, with a "no dealer fee" model.</p>
-          <div class="space-y-2 text-sm">
-            <p><span class="font-semibold text-teal-600">Pros:</span> "No dealer fees" is a huge selling point.</p>
-            <p><span class="font-semibold text-red-500">Cons:</span> Cost passed to consumer (higher rates).</p>
-          </div>
-          <div class="mt-auto pt-4">
-            <p class="font-semibold text-sm">Key Players:</p>
-            <div class="flex flex-wrap gap-2 mt-2">
-              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Acorn Finance</span>
-              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Hearth</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        `;
+        competitorList.appendChild(item);
+    });
 
-    <!-- Section 2: Competitor Head-to-Head -->
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold text-center mb-8">Competitor Head-to-Head</h2>
-      <div class="bg-white rounded-xl shadow-lg p-1 overflow-x-auto">
-        <table class="w-full text-sm table-auto">
-          <thead class="bg-slate-50">
-            <tr>
-              <th scope="col" class="px-6 py-4 font-bold text-slate-900 text-left align-middle">Feature</th>
-              <th scope="col" class="px-6 py-4 font-bold text-slate-900 text-center align-middle">Goodleap</th>
-              <th scope="col" class="px-6 py-4 font-bold text-slate-900 text-center align-middle">Momnt</th>
-              <th scope="col" class="px-6 py-4 font-bold text-slate-900 text-center align-middle">Acorn Finance</th>
-              <th scope="col" class="px-6 py-4 font-bold text-slate-900 text-center align-middle">Synchrony</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b h-16">
-              <td class="px-6 py-4 font-semibold text-slate-700 text-left align-middle">Model</td>
-              <td class="px-6 py-4 text-center align-middle">Lender Platform</td>
-              <td class="px-6 py-4 text-center align-middle">Aggregator</td>
-              <td class="px-6 py-4 text-center align-middle">Marketplace</td>
-              <td class="px-6 py-4 text-center align-middle">Lender Platform</td>
-            </tr>
-            <tr class="bg-slate-50 border-b h-16">
-              <td class="px-6 py-4 font-semibold text-slate-700 text-left align-middle">Verticals</td>
-              <td class="px-6 py-4 text-center align-middle">Home Improvement</td>
-              <td class="px-6 py-4 text-center align-middle">HI &amp; Medical</td>
-              <td class="px-6 py-4 text-center align-middle">Home Improvement</td>
-              <td class="px-6 py-4 text-center align-middle">HI, Medical, Retail</td>
-            </tr>
-            <tr class="border-b h-16">
-              <td class="px-6 py-4 font-semibold text-slate-700 text-left align-middle">Credit Spectrum</td>
-              <td class="px-6 py-4 text-center align-middle"><span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Prime / Near-Prime</span></td>
-              <td class="px-6 py-4 text-center align-middle"><span class="bg-teal-100 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Full Spectrum</span></td>
-              <td class="px-6 py-4 text-center align-middle"><span class="bg-teal-100 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Full Spectrum</span></td>
-              <td class="px-6 py-4 text-center align-middle"><span class="bg-teal-100 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Full Spectrum</span></td>
-            </tr>
-            <tr class="bg-slate-50 border-b h-16">
-              <td class="px-6 py-4 font-semibold text-slate-700 text-left align-middle">Onboarding</td>
-              <td class="px-6 py-4 text-center align-middle"><span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Manual</span></td>
-              <td class="px-6 py-4 text-center align-middle"><span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Manual</span></td>
-              <td class="px-6 py-4 text-center align-middle"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Instant</span></td>
-              <td class="px-6 py-4 text-center align-middle"><span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Manual</span></td>
-            </tr>
-            <tr class="h-16">
-              <td class="px-6 py-4 font-semibold text-slate-700 text-left align-middle">Key Selling Point</td>
-              <td class="px-6 py-4 text-center align-middle">Brand Trust &amp; Stability</td>
-              <td class="px-6 py-4 text-center align-middle">High Approval Rates</td>
-              <td class="px-6 py-4 text-center align-middle">"No Dealer Fees"</td>
-              <td class="px-6 py-4 text-center align-middle">Scale &amp; All-in-One</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="text-center mt-4 text-sm text-slate-500">A direct comparison of the market leaders and their core offerings.</p>
-    </section>
+    // Re-attach event listeners
+    attachAccordionListeners();
+}
 
-    <!-- Section 3: Sales Battle Cards -->
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold text-center mb-8">Key Competitive Pitches &amp; How to Win</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-        <!-- Card 1 -->
-        <div class="card p-6 border-t-4 border-red-500 flex flex-col h-full">
-          <div>
-            <h3 class="text-lg font-semibold mb-2">"We are the bank."</h3>
-            <p class="text-sm text-slate-500 mb-4 font-medium">Pitch by: <span class="font-bold">Synchrony, Wells Fargo</span></p>
-            <p class="text-slate-600 mb-4">Their strength is stability and brand trust. They target established merchants who prioritize a relationship with a large bank.</p>
-          </div>
-          <div class="bg-green-50 p-4 rounded-lg mt-auto">
-            <h4 class="font-bold text-green-800 mb-1">Your Winning Counter</h4>
-            <p class="text-sm text-green-700">"Stability is crucial, but so is speed and maximizing sales. We offer bank-level security with the agility to approve more customers, instantly, without the lengthy onboarding process."</p>
-          </div>
-        </div>
+function attachAccordionListeners() {
+    document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            // Allow clicking buttons inside trigger without closing
+            if (e.target.tagName === 'BUTTON') return;
+            trigger.parentElement.classList.toggle('active');
+        });
+    });
+}
 
-        <!-- Card 2 -->
-        <div class="card p-6 border-t-4 border-yellow-500 flex flex-col h-full">
-          <div>
-            <h3 class="text-lg font-semibold mb-2">"We have ZERO dealer fees!"</h3>
-            <p class="text-sm text-slate-500 mb-4 font-medium">Pitch by: <span class="font-bold">Acorn Finance, Hearth</span></p>
-            <p class="text-slate-600 mb-4">A very powerful and simple pitch. Their model is free for the contractor, making it highly attractive.</p>
-          </div>
-          <div class="bg-green-50 p-4 rounded-lg mt-auto">
-            <h4 class="font-bold text-green-800 mb-1">Your Winning Counter</h4>
-            <p class="text-sm text-green-700">"'Free for you' often means higher rates for your customer, which can hurt closing rates. We give you control over promotions, like 0% APR, to increase ticket sizes and make the sale."</p>
-          </div>
-        </div>
+function filterCompetitors() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const activeModel = document.querySelector('#modelFilters .filter-btn.active').dataset.filter;
+    const activeVertical = document.querySelector('#verticalFilters .filter-btn.active').dataset.filter;
 
-        <!-- Card 3 -->
-        <div class="card p-6 border-t-4 border-blue-500 flex flex-col h-full">
-          <div>
-            <h3 class="text-lg font-semibold mb-2">"We approve everyone!"</h3>
-            <p class="text-sm text-slate-500 mb-4 font-medium">Pitch by: <span class="font-bold">Momnt, ClarityPay</span></p>
-            <p class="text-slate-600 mb-4">They promise to find a 'yes' for every customer, which is a major pain point for merchants losing sales to declines.</p>
-          </div>
-          <div class="bg-green-50 p-4 rounded-lg mt-auto">
-            <h4 class="font-bold text-green-800 mb-1">Your Winning Counter</h4>
-            <p class="text-sm text-green-700">"Approving everyone is the goal. We do it through a smarter, more efficient platform that provides a better experience for you and your customer, with transparent costs and powerful tools to manage your pipeline."</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    const filteredData = competitors.filter(comp => {
+        const nameMatch = comp.name.toLowerCase().includes(searchTerm);
+        const modelMatch = activeModel === 'all' || comp.type === activeModel;
+        const verticalMatch = activeVertical === 'all' || comp.verticals.includes(activeVertical);
+        return nameMatch && modelMatch && verticalMatch;
+    });
 
-    <!-- Footer -->
-    <footer class="text-center mt-12 py-6 border-t border-slate-200">
-      <p class="text-slate-500">Ottri Internal Intelligence | September 2025</p>
-    </footer>
-  </div>
+    renderCompetitors(filteredData);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Initial render
+    renderCompetitors(competitors);
+
+    // Search listener
+    document.getElementById('searchInput').addEventListener('input', filterCompetitors);
+
+    // Filter button listeners
+    document.querySelectorAll('#modelFilters .filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('#modelFilters .filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterCompetitors();
+        });
+    });
+
+     document.querySelectorAll('#verticalFilters .filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('#verticalFilters .filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterCompetitors();
+        });
+    });
+});
+
+</script>
 </body>
 </html>
+
