@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ottri Competitive Landscape</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Inter',sans-serif;background-color:#f8fafc}
+    .gradient-text{
+      background:linear-gradient(to right,#3b82f6,#14b8a6);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent
+    }
+    .card{
+      background-color:#fff;border-radius:.75rem;
+      box-shadow:0 4px 6px -1px rgb(0 0 0 / .1),0 2px 4px -2px rgb(0 0 0 / .1);
+      transition:transform .2s ease-in-out,box-shadow .2s ease-in-out
+    }
+    .card:hover{transform:translateY(-5px);box-shadow:0 10px 15px -3px rgb(0 0 0 / .1),0 4px 6px -4px rgb(0 0 0 / .1)}
+  </style>
+</head>
+<body class="text-slate-800 leading-relaxed">
+  <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+    <!-- Header -->
+    <header class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold mb-2">
+        Welcome to the <span class="gradient-text">Embedded Finance Landscape</span>
+      </h1>
+      <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+        An interactive guide for the Ottri team to understand our competitors and the market we're shaping.
+      </p>
+    </header>
+
+    <!-- Section 1: The 3 Core Business Models -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-center mb-8">The 3 Core Business Models</h2>
+      <!-- stretch children so card bottoms align without changing spacing -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <!-- Card 1 -->
+        <div class="card p-6 flex flex-col h-full">
+          <div class="flex items-center mb-4">
+            <div class="mr-4 rounded-full bg-blue-100 w-12 h-12 grid place-items-center shrink-0">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <h3 class="text-xl font-bold">Lender Platform</h3>
+          </div>
+          <p class="text-slate-600 mb-4">Offers one financing product from a single source (often a bank). Simple and consistent, but with lower approval rates.</p>
+          <div class="space-y-2 text-sm">
+            <p><span class="font-semibold text-teal-600">Pros:</span> Simple, consistent branding.</p>
+            <p><span class="font-semibold text-red-500">Cons:</span> Lower approval rates, less flexibility.</p>
+          </div>
+          <div class="mt-auto pt-4">
+            <p class="font-semibold text-sm">Key Players:</p>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Goodleap</span>
+              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Synchrony</span>
+              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Service Finance</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card p-6 flex flex-col h-full">
+          <div class="flex items-center mb-4">
+            <div class="mr-4 rounded-full bg-teal-100 w-12 h-12 grid place-items-center shrink-0">
+              <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            </div>
+            <h3 class="text-xl font-bold">Aggregator</h3>
+          </div>
+          <p class="text-slate-600 mb-4">One platform connects to a curated network of lenders, creating a "waterfall" to boost approval chances.</p>
+          <div class="space-y-2 text-sm">
+            <p><span class="font-semibold text-teal-600">Pros:</span> Higher approval rates, more options.</p>
+            <p><span class="font-semibold text-red-500">Cons:</span> Can be more complex to manage.</p>
+          </div>
+          <div class="mt-auto pt-4">
+            <p class="font-semibold text-sm">Key Players:</p>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Momnt</span>
+              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">ChargeAfter</span>
+              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">GreenSky</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card p-6 flex flex-col h-full">
+          <div class="flex items-center mb-4">
+            <div class="mr-4 rounded-full bg-indigo-100 w-12 h-12 grid place-items-center shrink-0">
+              <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            </div>
+            <h3 class="text-xl font-bold">Marketplace</h3>
+          </div>
+          <p class="text-slate-600 mb-4">An open platform where multiple lenders compete. Often free for the merchant, with a "no dealer fee" model.</p>
+          <div class="space-y-2 text-sm">
+            <p><span class="font-semibold text-teal-600">Pros:</span> "No dealer fees" is a huge selling point.</p>
+            <p><span class="font-semibold text-red-500">Cons:</span> Cost passed to consumer (higher rates).</p>
+          </div>
+          <div class="mt-auto pt-4">
+            <p class="font-semibold text-sm">Key Players:</p>
+            <div class="flex flex-wrap gap-2 mt-2">
+              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Acorn Finance</span>
+              <span class="bg-slate-100 text-slate-700 text-sm px-2 py-1 rounded-full">Hearth</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Competitor Head-to-Head -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-center mb-8">Competitor Head-to-Head</h2>
+      <div class="bg-white rounded-xl shadow-lg p-1 overflow-x-auto">
+        <table class="w-full text-sm table-auto">
+          <thead class="bg-slate-50">
+            <tr>
+              <th scope="col" class="px-6 py-4 font-bold text-slate-900 text-left align-middle">Feature</th>
+              <th scope="col" class="px-6 py-4 font-bold text-slate-900 text-center align-middle">Goodleap</th>
+              <th scope="col" class="px-6 py-4 font-bold text-slate-900 text-center align-middle">Momnt</th>
+              <th scope="col" class="px-6 py-4 font-bold text-slate-900 text-center align-middle">Acorn Finance</th>
+              <th scope="col" class="px-6 py-4 font-bold text-slate-900 text-center align-middle">Synchrony</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b h-16">
+              <td class="px-6 py-4 font-semibold text-slate-700 text-left align-middle">Model</td>
+              <td class="px-6 py-4 text-center align-middle">Lender Platform</td>
+              <td class="px-6 py-4 text-center align-middle">Aggregator</td>
+              <td class="px-6 py-4 text-center align-middle">Marketplace</td>
+              <td class="px-6 py-4 text-center align-middle">Lender Platform</td>
+            </tr>
+            <tr class="bg-slate-50 border-b h-16">
+              <td class="px-6 py-4 font-semibold text-slate-700 text-left align-middle">Verticals</td>
+              <td class="px-6 py-4 text-center align-middle">Home Improvement</td>
+              <td class="px-6 py-4 text-center align-middle">HI &amp; Medical</td>
+              <td class="px-6 py-4 text-center align-middle">Home Improvement</td>
+              <td class="px-6 py-4 text-center align-middle">HI, Medical, Retail</td>
+            </tr>
+            <tr class="border-b h-16">
+              <td class="px-6 py-4 font-semibold text-slate-700 text-left align-middle">Credit Spectrum</td>
+              <td class="px-6 py-4 text-center align-middle"><span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Prime / Near-Prime</span></td>
+              <td class="px-6 py-4 text-center align-middle"><span class="bg-teal-100 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Full Spectrum</span></td>
+              <td class="px-6 py-4 text-center align-middle"><span class="bg-teal-100 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Full Spectrum</span></td>
+              <td class="px-6 py-4 text-center align-middle"><span class="bg-teal-100 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Full Spectrum</span></td>
+            </tr>
+            <tr class="bg-slate-50 border-b h-16">
+              <td class="px-6 py-4 font-semibold text-slate-700 text-left align-middle">Onboarding</td>
+              <td class="px-6 py-4 text-center align-middle"><span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Manual</span></td>
+              <td class="px-6 py-4 text-center align-middle"><span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Manual</span></td>
+              <td class="px-6 py-4 text-center align-middle"><span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Instant</span></td>
+              <td class="px-6 py-4 text-center align-middle"><span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Manual</span></td>
+            </tr>
+            <tr class="h-16">
+              <td class="px-6 py-4 font-semibold text-slate-700 text-left align-middle">Key Selling Point</td>
+              <td class="px-6 py-4 text-center align-middle">Brand Trust &amp; Stability</td>
+              <td class="px-6 py-4 text-center align-middle">High Approval Rates</td>
+              <td class="px-6 py-4 text-center align-middle">"No Dealer Fees"</td>
+              <td class="px-6 py-4 text-center align-middle">Scale &amp; All-in-One</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center mt-4 text-sm text-slate-500">A direct comparison of the market leaders and their core offerings.</p>
+    </section>
+
+    <!-- Section 3: Sales Battle Cards -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-center mb-8">Key Competitive Pitches &amp; How to Win</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <!-- Card 1 -->
+        <div class="card p-6 border-t-4 border-red-500 flex flex-col h-full">
+          <div>
+            <h3 class="text-lg font-semibold mb-2">"We are the bank."</h3>
+            <p class="text-sm text-slate-500 mb-4 font-medium">Pitch by: <span class="font-bold">Synchrony, Wells Fargo</span></p>
+            <p class="text-slate-600 mb-4">Their strength is stability and brand trust. They target established merchants who prioritize a relationship with a large bank.</p>
+          </div>
+          <div class="bg-green-50 p-4 rounded-lg mt-auto">
+            <h4 class="font-bold text-green-800 mb-1">Your Winning Counter</h4>
+            <p class="text-sm text-green-700">"Stability is crucial, but so is speed and maximizing sales. We offer bank-level security with the agility to approve more customers, instantly, without the lengthy onboarding process."</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card p-6 border-t-4 border-yellow-500 flex flex-col h-full">
+          <div>
+            <h3 class="text-lg font-semibold mb-2">"We have ZERO dealer fees!"</h3>
+            <p class="text-sm text-slate-500 mb-4 font-medium">Pitch by: <span class="font-bold">Acorn Finance, Hearth</span></p>
+            <p class="text-slate-600 mb-4">A very powerful and simple pitch. Their model is free for the contractor, making it highly attractive.</p>
+          </div>
+          <div class="bg-green-50 p-4 rounded-lg mt-auto">
+            <h4 class="font-bold text-green-800 mb-1">Your Winning Counter</h4>
+            <p class="text-sm text-green-700">"'Free for you' often means higher rates for your customer, which can hurt closing rates. We give you control over promotions, like 0% APR, to increase ticket sizes and make the sale."</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card p-6 border-t-4 border-blue-500 flex flex-col h-full">
+          <div>
+            <h3 class="text-lg font-semibold mb-2">"We approve everyone!"</h3>
+            <p class="text-sm text-slate-500 mb-4 font-medium">Pitch by: <span class="font-bold">Momnt, ClarityPay</span></p>
+            <p class="text-slate-600 mb-4">They promise to find a 'yes' for every customer, which is a major pain point for merchants losing sales to declines.</p>
+          </div>
+          <div class="bg-green-50 p-4 rounded-lg mt-auto">
+            <h4 class="font-bold text-green-800 mb-1">Your Winning Counter</h4>
+            <p class="text-sm text-green-700">"Approving everyone is the goal. We do it through a smarter, more efficient platform that provides a better experience for you and your customer, with transparent costs and powerful tools to manage your pipeline."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center mt-12 py-6 border-t border-slate-200">
+      <p class="text-slate-500">Ottri Internal Intelligence | September 2025</p>
+    </footer>
+  </div>
+</body>
+</html>
